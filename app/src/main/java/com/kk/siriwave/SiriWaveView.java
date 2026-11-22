@@ -13,7 +13,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -24,14 +24,13 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * author : kk-小德
+ * author : kk-灏忓痉
  * date : 2018/12/27
  **/
 public class SiriWaveView extends View {
 
     private int mWidth, mHeight;
-    private int MAX_AMPLITUDE; //最大震动幅度
-
+    private int MAX_AMPLITUDE; //鏈€澶ч渿鍔ㄥ箙搴?
     private static final int MAX_WAVE_COUNT = 15;
 
 
@@ -41,21 +40,21 @@ public class SiriWaveView extends View {
     //random
     private Random random;
 
-    //参数
-    private float yAmplitude = 0.3f; //纵向振幅
-    private float xAmplitude = 1f; //横向振幅
-    private int waveCount = 0; //波形数量
+    //鍙傛暟
+    private float yAmplitude = 0.3f; //绾靛悜鎸箙
+    private float xAmplitude = 1f; //妯悜鎸箙
+    private int waveCount = 0; //娉㈠舰鏁伴噺
 
-    //波形
+    //娉㈠舰
     private List<Wave> waves;
 
 
-    //颜色
+    //棰滆壊
     private int[] COLORS = {R.color.green, R.color.blue, R.color.pink};
     private int[] lineColors = new int[]{0xFF111111, 0xFFFFFFFF, 0xFFFFFFFF, 0xFF111111};
     private float[] linepositions = new float[]{0f, 0.1f, 0.9f, 1};
 
-    //是否在动画
+    // Whether the wave animation is running.
     private boolean running;
 
 
@@ -73,8 +72,7 @@ public class SiriWaveView extends View {
     }
 
     /**
-     * 初始化
-     */
+     * 鍒濆鍖?     */
     private void init() {
         mPaint = new Paint();
         random = new Random();
@@ -86,7 +84,7 @@ public class SiriWaveView extends View {
     }
 
     /**
-     * 0到100
+     * 0鍒?00
      * @param volume [0,100]
      */
     public void setVolume(float volume) {
@@ -156,8 +154,7 @@ public class SiriWaveView extends View {
 
 
     /**
-     * 激活可以动的波形
-     * @param count
+     * 婵€娲诲彲浠ュ姩鐨勬尝褰?     * @param count
      */
     private void activityWaveCount(int count) {
         int size = waves.size();
@@ -187,7 +184,7 @@ public class SiriWaveView extends View {
     }
 
     /**
-     * 绘制波形
+     * 缁樺埗娉㈠舰
      * @param canvas
      */
     @Override
@@ -258,7 +255,7 @@ public class SiriWaveView extends View {
 
 
     /**
-     * 单个波形
+     * 鍗曚釜娉㈠舰
      */
     class Wave {
         boolean playing = false;
@@ -279,7 +276,7 @@ public class SiriWaveView extends View {
         }
 
         public void respawn() {
-            this.seed = Math.random();  // 位置
+            this.seed = Math.random();  // 浣嶇疆
             maxWidth = (random.nextInt(mWidth / 16) + mWidth * 3 / 11);
             if (seed <= 0.2) {
                 maxHeight = random.nextInt(MAX_AMPLITUDE / 6) + MAX_AMPLITUDE / 5;
@@ -320,7 +317,7 @@ public class SiriWaveView extends View {
             Path pathN = new Path();
             path.moveTo(mWidth / 4, mHeight / 2);
             pathN.moveTo(mWidth / 4, mHeight / 2);
-            double x_base = mWidth / 2  // 波浪位置
+            double x_base = mWidth / 2  // 娉㈡氮浣嶇疆
                     + (-mWidth / 6 + this.seed
                     * (mWidth / 3));
             double y_base = mHeight / 2;
@@ -361,3 +358,4 @@ public class SiriWaveView extends View {
         }
     }
 }
+
